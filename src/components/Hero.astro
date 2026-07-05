@@ -1,0 +1,138 @@
+---
+import Terminal from './Terminal.astro';
+---
+
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-eyebrow">[+] SYS_INFO: INGENIERO EN LINEA</div>
+    <h1 class="hero-title">Juan Pablo Quintero</h1>
+    <h2 class="hero-subtitle text-secondary">Tech Lead & Developer</h2>
+    <p class="hero-mission">
+      <strong>"Transformando la forma tradicional de construir software."</strong>
+    </p>
+    <p class="hero-description">
+      Líder técnico y desarrollador enfocado en demostrar que es posible integrar Inteligencia Artificial (Gemini) sin poner en riesgo la seguridad ni sacrificar la fiabilidad y robustez en nuestros sistemas consolidados, utilizando arquitecturas en la nube modernas (GCP) y lenguajes core como Go y Python.
+    </p>
+    <div class="hero-actions">
+      <a href="#contacto" class="button button-primary">
+        [+] CONECTAR
+      </a>
+      <div class="social-links">
+        <a href="https://github.com/juanpquintero" target="_blank" rel="noopener noreferrer" class="social-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/juan-pablo-quintero/" target="_blank" rel="noopener noreferrer" class="social-link">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-terminal">
+    <Terminal />
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl) 0;
+    min-height: 80vh;
+  }
+
+  @media (min-width: 768px) {
+    .hero-section {
+      flex-direction: row;
+      align-items: center;
+      min-height: 70vh;
+    }
+  }
+
+  .hero-content {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-terminal {
+    flex: 1;
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--color-tertiary);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+  }
+
+  .hero-mission {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-description {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-on-surface);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  @media (min-width: 480px) {
+    .hero-actions {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  .social-link {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-secondary);
+    border: 2px solid var(--color-surface);
+    padding: 10px var(--spacing-md);
+    border-radius: var(--rounded-sm);
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    border-bottom: 2px solid var(--color-surface); /* Resetea el estilo dashed por defecto */
+    text-decoration: none;
+  }
+
+  .social-link:hover {
+    background-color: var(--color-surface);
+    border-color: var(--color-secondary);
+    color: var(--color-on-surface);
+  }
+</style>

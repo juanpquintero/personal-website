@@ -1,0 +1,235 @@
+---
+---
+<div class="terminal zero-gravity">
+  <div class="terminal-header">
+    <div class="terminal-buttons">
+      <span class="terminal-btn"></span>
+      <span class="terminal-btn yellow"></span>
+      <span class="terminal-btn green"></span>
+    </div>
+    <div class="terminal-title">juan@quintero:~ (sh)</div>
+  </div>
+  <div class="terminal-body" id="terminal-body">
+    <div class="terminal-history" id="terminal-history">
+      <!-- Mensajes de bienvenida de la consola -->
+      <p class="terminal-system-line">[SISTEMA INICIADO] - Conexión: SECURE_TTY</p>
+      <p class="terminal-system-line">Escribe <span class="text-primary terminal-bold">help</span> para listar los comandos disponibles.</p>
+      <p class="terminal-system-line">&nbsp;</p>
+    </div>
+    <div class="terminal-input-line">
+      <span class="terminal-prompt">juan@quintero:~$</span>
+      <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false" aria-label="Consola de comandos" />
+    </div>
+  </div>
+</div>
+
+<style>
+  .terminal {
+    height: 380px;
+    max-width: 550px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: text;
+    background-color: var(--color-neutral);
+    border: 2px solid var(--color-surface);
+    border-radius: var(--rounded-md);
+    overflow: hidden;
+  }
+
+  .terminal-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    font-family: var(--font-display);
+    font-size: 14px;
+    line-height: 1.45;
+    padding: var(--spacing-md);
+  }
+
+  .terminal-history {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .terminal-history p {
+    font-family: var(--font-display) !important;
+    font-size: 14px;
+    margin-bottom: 0;
+    line-height: 1.45;
+  }
+
+  .terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: var(--spacing-xs);
+  }
+
+  #terminal-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--color-on-surface);
+    font-family: var(--font-display);
+    font-size: 14px;
+    padding: 0;
+    box-shadow: none;
+    caret-color: var(--color-primary); /* Cursor parpadeante naranja */
+  }
+
+  /* Clases de utilidad específicas para líneas de terminal */
+  .terminal-system-line {
+    color: var(--color-secondary);
+  }
+
+  .terminal-output-line {
+    color: var(--color-on-surface);
+    white-space: pre-wrap;
+  }
+
+  .terminal-error-line {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .terminal-success-line {
+    color: var(--color-tertiary);
+    font-weight: 700;
+  }
+
+  .terminal-bold {
+    font-weight: 700;
+  }
+</style>
+
+<script>
+  function initializeTerminal() {
+    const terminal = document.querySelector('.terminal');
+    const input = document.getElementById('terminal-input') as HTMLInputElement;
+    const history = document.getElementById('terminal-history');
+    const body = document.getElementById('terminal-body');
+
+    if (!terminal || !input || !history || !body) return;
+
+    // Enfocar automáticamente al iniciar
+    input.focus();
+
+    // Mantener el foco al hacer clic en cualquier parte de la consola
+    terminal.addEventListener('click', () => {
+      input.focus();
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const rawValue = input.value;
+        const value = rawValue.trim();
+        input.value = '';
+
+        // Agregar el comando digitado por el usuario al historial
+        const cmdLine = document.createElement('p');
+        cmdLine.innerHTML = `<span class="terminal-prompt">juan@quintero:~$</span> <span>${escapeHTML(rawValue)}</span>`;
+        history.appendChild(cmdLine);
+
+        if (value !== '') {
+          const parts = value.split(/\s+/);
+          const cmd = parts[0].toLowerCase();
+          const args = parts.slice(1);
+
+          executeCommand(cmd, args);
+        }
+
+        // Auto-scroll hacia abajo
+        body.scrollTop = body.scrollHeight;
+      }
+    });
+  }
+
+  function escapeHTML(str: string) {
+    return str.replace(/[&<>'"]/g, 
+      (tag) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+      }[tag] || tag)
+    );
+  }
+
+  function printLine(text: string, className = 'terminal-output-line') {
+    const history = document.getElementById('terminal-history');
+    if (!history) return;
+    const line = document.createElement('p');
+    line.className = className;
+    line.innerHTML = text;
+    history.appendChild(line);
+  }
+
+  function executeCommand(cmd: string, args: string[]) {
+    switch (cmd) {
+      case 'help':
+        printLine('Comandos disponibles:');
+        printLine('  <span class="text-primary terminal-bold">help</span>    - Muestra este menú de ayuda.');
+        printLine('  <span class="text-primary terminal-bold">ls</span>      - Lista las secciones disponibles en el sitio.');
+        printLine('  <span class="text-primary terminal-bold">cd [sec]</span> - Navega suavemente a la sección especificada.');
+        printLine('  <span class="text-primary terminal-bold">whoami</span>  - Muestra información profesional resumida del ingeniero.');
+        printLine('  <span class="text-primary terminal-bold">clear</span>   - Limpia el historial de la pantalla de la terminal.');
+        break;
+
+      case 'ls':
+        printLine('Secciones disponibles para navegación:');
+        printLine('  - <span class="text-secondary terminal-bold">sobre-mi</span>     (Sobre Juan Pablo Quintero)');
+        printLine('  - <span class="text-secondary terminal-bold">ecosistema</span>   (Ecosistema Tecnológico)');
+        printLine('  - <span class="text-secondary terminal-bold">divulgacion</span>  (Propósito y Comunidad)');
+        printLine('  - <span class="text-secondary terminal-bold">contacto</span>     (Establecer Conexión)');
+        break;
+
+      case 'cd':
+        const targetSection = args[0] || '~';
+        if (targetSection === '~' || targetSection === '/' || targetSection === '..') {
+          // Desplazarse al inicio
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          printLine('[+] Retornando al inicio del sistema.', 'terminal-success-line');
+        } else {
+          let sectionId = targetSection.toLowerCase();
+          if (sectionId === 'proyectos') {
+            sectionId = 'ecosistema';
+          }
+          const targetEl = document.getElementById(sectionId);
+          if (targetEl) {
+            targetEl.scrollIntoView({ behavior: 'smooth' });
+            printLine(`[+] Desplazamiento exitoso a la sección: <span class="text-tertiary terminal-bold">${sectionId}</span>...`, 'terminal-success-line');
+          } else {
+            printLine(`cd: no se encontró la sección: '${escapeHTML(targetSection)}'. Escribe <span class="text-primary">ls</span> para ver las opciones.`, 'terminal-error-line');
+          }
+        }
+        break;
+
+      case 'whoami':
+        printLine('<span class="text-tertiary terminal-bold">juan@quintero</span> - Tech Lead & Developer');
+        printLine('--------------------------------------------------');
+        printLine('Especialista en backend (Go, Python) y automatización.');
+        printLine('Orquestación de LLMs e Inteligencia Artificial (Gemini).');
+        printLine('Arquitecturas escalables y despliegues en Google Cloud (GCP).');
+        printLine('Misión: "Transformando la forma tradicional de construir software."');
+        break;
+
+      case 'clear':
+        const history = document.getElementById('terminal-history');
+        if (history) {
+          history.innerHTML = '';
+        }
+        break;
+
+      default:
+        printLine(`sh: comando no encontrado: '${escapeHTML(cmd)}'. Escribe <span class="text-primary">help</span> para ayuda.`, 'terminal-error-line');
+    }
+  }
+
+  // Inicialización compatible con transiciones de Astro (ViewTransitions)
+  initializeTerminal();
+  document.addEventListener('astro:page-load', initializeTerminal);
+</script>

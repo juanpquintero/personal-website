@@ -1,0 +1,178 @@
+---
+---
+<section id="ecosistema" class="ecosistema-section">
+  <div class="ecosistema-header">
+    <h2><span>[+] Ecosistema Tecnológico</span></h2>
+    <div class="header-divider"></div>
+  </div>
+  
+  <p class="ecosistema-intro">
+    Mi entorno de ejecución principal se centra en el backend, la orquestación en la nube y la integración de modelos de lenguaje grande (LLMs).
+  </p>
+
+  <div class="ecosistema-grid">
+    <!-- Columna 1: Backend Core -->
+    <div class="ecosistema-column col-backend">
+      <div class="column-tag">[01_BACKEND_CORE]</div>
+      <div class="ecosistema-items">
+        <div class="ecosistema-item">
+          <div class="item-title"><span class="prompt">>_</span> Go</div>
+          <div class="item-desc">Robustez y concurrencia como base del backend moderno.</div>
+        </div>
+        <div class="ecosistema-item">
+          <div class="item-title"><span class="prompt">>_</span> Python</div>
+          <div class="item-desc">El puente ideal hacia los datos y la IA.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna 2: Inteligencia Artificial -->
+    <div class="ecosistema-column col-ai">
+      <div class="column-tag">[02_AI_ORCHESTRATION]</div>
+      <div class="ecosistema-items">
+        <div class="ecosistema-item">
+          <div class="item-title"><span class="prompt">>_</span> Gemini</div>
+          <div class="item-desc">Implementación y orquestación de LLMs en flujos productivos.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna 3: Infraestructura -->
+    <div class="ecosistema-column col-infra">
+      <div class="column-tag">[03_INFRASTRUCTURE]</div>
+      <div class="ecosistema-items">
+        <div class="ecosistema-item">
+          <div class="item-title"><span class="prompt">>_</span> GCP (Google Cloud)</div>
+          <div class="item-desc">Arquitectura, despliegue y escalabilidad sobre Google Cloud Platform.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ecosistema-section {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    scroll-margin-top: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .ecosistema-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .header-divider {
+    height: 2px;
+    border-bottom: 2px solid var(--color-border);
+    width: 100%;
+  }
+
+  .ecosistema-intro {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-on-surface);
+    max-width: 800px;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .ecosistema-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-sm);
+  }
+
+  /* Estructura de Columnas Abiertas (Cardless) */
+  .ecosistema-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    border-left: 2px dashed var(--color-border);
+    padding-left: var(--spacing-md);
+    transition: border-left-color 0.25s ease;
+  }
+
+  .column-tag {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-secondary);
+    transition: color 0.25s ease;
+  }
+
+  .ecosistema-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .ecosistema-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .item-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-on-surface);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    transition: color 0.25s ease;
+  }
+
+  .prompt {
+    color: var(--color-border);
+    transition: color 0.25s ease;
+  }
+
+  .item-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: rgba(235, 219, 178, 0.85); /* Un tono más suave que on-surface */
+    line-height: 1.5;
+  }
+
+  /* --- Efectos Hover Dinámicos por Columna --- */
+
+  /* Backend: Naranja */
+  .ecosistema-column.col-backend:hover {
+    border-left-color: var(--color-primary);
+  }
+  .ecosistema-column.col-backend:hover .column-tag {
+    color: var(--color-primary);
+  }
+  .ecosistema-column.col-backend:hover .prompt {
+    color: var(--color-primary);
+  }
+
+  /* Inteligencia Artificial: Azul Retro */
+  .ecosistema-column.col-ai:hover {
+    border-left-color: var(--color-secondary);
+  }
+  .ecosistema-column.col-ai:hover .column-tag {
+    color: var(--color-secondary);
+  }
+  .ecosistema-column.col-ai:hover .prompt {
+    color: var(--color-secondary);
+  }
+
+  /* Infraestructura: Verde Terminal */
+  .ecosistema-column.col-infra:hover {
+    border-left-color: var(--color-tertiary);
+  }
+  .ecosistema-column.col-infra:hover .column-tag {
+    color: var(--color-tertiary);
+  }
+  .ecosistema-column.col-infra:hover .prompt {
+    color: var(--color-tertiary);
+  }
+</style>

@@ -1,0 +1,352 @@
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors (Gruvbox Transformación) */
+  --color-primary: #fe8019;       /* Naranja (Llamados a la acción, destaques de palabras) */
+  --color-secondary: #83a598;     /* Azul retro (Enlaces, metadatos, secundario) */
+  --color-tertiary: #b8bb26;      /* Verde terminal (Éxito, validación, prompts) */
+  --color-neutral: #1d2021;       /* Fondo oscuro 'hard' (Lienzo principal de alto contraste) */
+  --color-surface: #282828;       /* Fondo intermedio (Tarjetas, contenedores, cabeceras) */
+  --color-on-surface: #ebdbb2;    /* Texto crema principal (Lectura sin fatiga visual) */
+  --color-border: #3c3836;        /* Color para bordes retro */
+
+  /* Typography */
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: 'IBM Plex Sans', sans-serif;
+
+  /* Spacing (8px Grid Scale) */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+  --spacing-gutter: 24px;
+
+  /* Border Radius (Shapes de precisión técnica) */
+  --rounded-none: 0px;
+  --rounded-sm: 2px;
+  --rounded-md: 4px;
+  --rounded-lg: 8px;
+  --rounded-full: 9999px;
+
+  /* Elevation & Borders */
+  --border-width: 2px;
+  --border-solid: var(--border-width) solid var(--color-border);
+  --border-primary: var(--border-width) solid var(--color-primary);
+}
+
+/* Base Document Styles */
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  background-color: var(--color-neutral);
+  color: var(--color-on-surface);
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  line-height: 1.65; /* Leading generoso para IBM Plex Sans */
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings & Monospace Elements */
+h1, h2, h3, h4, h5, h6,
+.ui-element,
+button,
+input,
+textarea,
+select,
+code,
+pre {
+  font-family: var(--font-display);
+}
+
+h1 {
+  font-size: 2.5rem; /* 40px */
+  font-weight: 800; /* Peso pesado 800 */
+  line-height: 1.2;
+  letter-spacing: -0.02em; /* Tracking negativo */
+  color: var(--color-on-surface);
+}
+
+h2 {
+  font-size: 1.75rem; /* ~28px */
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.25rem; /* ~20px */
+  font-weight: 800;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  line-height: 1.65; /* Leading generoso */
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--color-secondary);
+  transition: color 0.15s ease, border-bottom-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-primary);
+  border-bottom-style: solid;
+  border-bottom-color: var(--color-primary);
+}
+
+/* Highlights inside headings and texts */
+h1 span, h2 span, h3 span, h4 span, h5 span, h6 span,
+h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong,
+.highlight {
+  color: var(--color-primary);
+  font-weight: inherit;
+}
+
+/* ==========================================================================
+   Componentes de Diseño Retro (Gruvbox)
+   ========================================================================== */
+
+/* Botón Principal (button-primary) */
+button, .button, .button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px var(--spacing-lg);
+  font-size: 14px;
+  font-weight: 500; /* ui-element: 500 */
+  letter-spacing: 0.02em;
+  background-color: var(--color-primary);
+  color: var(--color-neutral);
+  border: var(--border-width) solid var(--color-primary);
+  border-radius: var(--rounded-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+button:hover, .button:hover, .button-primary:hover {
+  background-color: var(--color-neutral);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Botón Secundario (Borde retro) */
+button.secondary, .button-secondary {
+  background-color: transparent;
+  color: var(--color-on-surface);
+  border: var(--border-solid);
+}
+
+button.secondary:hover, .button-secondary:hover {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border-color: var(--color-secondary);
+}
+
+/* Tarjetas y Contenedores (card-tutorial) */
+.card {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border: var(--border-solid);
+  border-radius: var(--rounded-md);
+  padding: var(--spacing-lg); /* lg: 32px */
+  position: relative;
+}
+
+/* Chips / Badges */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--rounded-full);
+  color: var(--color-secondary);
+  background-color: transparent;
+}
+
+/* ==========================================================================
+   Efecto Gravedad Cero (Zero Gravity / Elevation)
+   ========================================================================== */
+.zero-gravity {
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.zero-gravity:hover {
+  transform: translateY(-6px) rotate(1deg);
+  /* Sombra dura sin blur con color-surface */
+  box-shadow: 10px 15px 0px var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Componente de Terminal Interactiva (terminal-ui)
+   ========================================================================== */
+.terminal {
+  background-color: var(--color-neutral);
+  border: 2px solid var(--color-surface);
+  border-radius: var(--rounded-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-header {
+  background-color: var(--color-surface);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--color-surface);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-right: var(--spacing-md);
+}
+
+.terminal-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #fb4934; /* Gruvbox Red */
+}
+
+.terminal-btn.yellow { background-color: #fabd2f; } /* Gruvbox Yellow */
+.terminal-btn.green { background-color: #b8bb26; }  /* Gruvbox Green */
+
+.terminal-title {
+  color: var(--color-on-surface);
+  font-size: 14px;
+  font-family: var(--font-display);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.terminal-body {
+  padding: var(--spacing-md);
+  color: var(--color-on-surface);
+  overflow-y: auto;
+}
+
+.terminal-body p {
+  font-family: var(--font-display);
+  font-size: 14px;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Elementos destacados con mayor peso visual */
+.terminal-body p span.terminal-bold,
+.terminal-prompt,
+.terminal-system-bold,
+.terminal-error-bold {
+  font-weight: 700; /* terminal-bold: 700 */
+}
+
+.terminal-prompt {
+  color: var(--color-tertiary);
+  margin-right: var(--spacing-sm);
+}
+
+.terminal-system {
+  color: var(--color-secondary);
+}
+
+.terminal-error {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Formularios Estilo Retro / Consola
+   ========================================================================== */
+.form-group {
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-secondary);
+}
+
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 2px solid var(--color-border);
+  color: var(--color-on-surface);
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: var(--font-display);
+  border-radius: var(--rounded-sm);
+  width: 100%;
+  outline: none;
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+textarea::placeholder {
+  color: rgba(235, 219, 178, 0.35);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: inset 2px 2px 0px rgba(0, 0, 0, 0.4), 0px 0px 4px rgba(254, 128, 25, 0.2);
+}
+
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2383a598'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  padding-right: 35px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Utilities */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-tertiary { color: var(--color-tertiary); }

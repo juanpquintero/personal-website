@@ -1,0 +1,553 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import AboutMe from '../components/AboutMe.astro';
+import Ecosistema from '../components/Ecosistema.astro';
+
+const contactEmail = 'me@juanpquintero.com';
+---
+
+<Layout title="Juan Pablo Quintero | Tech Lead & Developer">
+	<main class="container">
+		<!-- Sección de Presentación Principal (Hero + Terminal) -->
+		<Hero />
+
+		<!-- Sección: Sobre Mí -->
+		<AboutMe />
+
+		<!-- Sección: Ecosistema Tecnológico -->
+		<Ecosistema />
+
+		<!-- Sección: Divulgación -->
+		<section id="divulgacion" class="divulgacion-section">
+			<div class="divulgacion-header">
+				<h2><span>[+] divulgacion</span></h2>
+				<div class="header-divider"></div>
+			</div>
+
+			<p class="divulgacion-intro">
+				No estoy aquí para vender un servicio, estoy aquí para compartir conocimiento.
+			</p>
+
+			<div class="divulgacion-grid">
+				<div class="divulgacion-column col-build">
+					<div class="column-tag">[01_CONSTRUYO]</div>
+					<p class="column-desc">Herramientas, automatizaciones y arquitecturas backend que resuelven problemas reales en producción.</p>
+				</div>
+				<div class="divulgacion-column col-break">
+					<div class="column-tag">[02_ROMPO]</div>
+					<p class="column-desc">Muestro los errores y las decisiones fallidas sin filtro: el aprendizaje real está en el fallo, no en el resultado final pulido.</p>
+				</div>
+				<div class="divulgacion-column col-fix">
+					<div class="column-tag">[03_SOLUCIONO]</div>
+					<p class="column-desc">Documento el proceso completo de diagnóstico y corrección, para que el conocimiento sea replicable por otros.</p>
+				</div>
+			</div>
+
+			<div class="mission-panel">
+				<div class="mission-header">
+					<span class="mission-tag">[TARGET_LOCK]</span>
+					<span class="mission-status">STATUS: EN_PROGRESO</span>
+				</div>
+				<p class="mission-text">
+					Busco sacar a los desarrolladores backend de su zona de confort de una manera segura y estructurada, demostrando que la IA puede escribir código óptimo bajo nuestra supervisión experta.
+				</p>
+				<div class="mission-goal">
+					<span class="goal-label">OBJETIVO_A_LARGO_PLAZO &gt;</span>
+					<span class="goal-value">Referente técnico en la comunidad hispanohablante y certificación <strong>Google Developer Expert (GDE)</strong>, validando mi compromiso con el ecosistema de Google Cloud y la IA.</span>
+				</div>
+			</div>
+		</section>
+
+		<!-- Sección: Contacto -->
+		<section id="contacto" class="contacto-section">
+			<div class="contacto-header">
+				<h2><span>[+] contacto</span></h2>
+				<div class="uptime-indicator">
+					<span class="uptime-dot"></span>
+					<span class="uptime-label">SESSION_UPTIME:</span>
+					<span class="uptime-value" id="contact-uptime">00:00:00</span>
+				</div>
+			</div>
+
+			<p class="contacto-intro">
+				Si buscas discutir sobre arquitectura, debatir sobre la adopción de Go en sistemas heredados, o explorar las capacidades de Gemini en entornos productivos, el canal está abierto.
+			</p>
+
+			<div class="contacto-grid">
+				<!-- Panel Izquierdo: Formulario de Transmisión -->
+				<div class="transmit-panel">
+					<div class="panel-tag">[01_TRANSMITIR_MENSAJE]</div>
+
+					<form id="contact-form" class="transmit-form" data-contact-email={contactEmail}>
+						<div class="form-group">
+							<label for="contact-name">DE:</label>
+							<input type="text" id="contact-name" name="name" placeholder="tu_nombre" autocomplete="off" required />
+						</div>
+						<div class="form-group">
+							<label for="contact-subject">ASUNTO:</label>
+							<input type="text" id="contact-subject" name="subject" placeholder="arquitectura / go / gemini / otro" autocomplete="off" required />
+						</div>
+						<div class="form-group">
+							<label for="contact-message">MENSAJE:</label>
+							<textarea id="contact-message" name="message" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+						</div>
+						<button type="submit" class="button-primary transmit-submit">&gt;&gt; transmitir_mensaje</button>
+						<p class="transmit-feedback" id="transmit-feedback" aria-live="polite"></p>
+					</form>
+				</div>
+
+				<!-- Panel Derecho: Canales Directos -->
+				<div class="routes-panel">
+					<div class="panel-tag">[02_CANALES_DIRECTOS]</div>
+
+					<div class="routes-table" role="table">
+						<div class="routes-row routes-row-header" role="row">
+							<span role="columnheader">CANAL</span>
+							<span role="columnheader">DESTINO</span>
+							<span role="columnheader">ESTADO</span>
+						</div>
+						<a class="routes-row" role="row" href={`mailto:${contactEmail}`}>
+							<span class="route-type">EMAIL</span>
+							<span class="route-value">{contactEmail}</span>
+							<span class="route-status">OPEN <i class="route-arrow">&rarr;</i></span>
+						</a>
+						<a class="routes-row" role="row" href="https://www.linkedin.com/in/juan-pablo-quintero/" target="_blank" rel="noopener noreferrer">
+							<span class="route-type">LINKEDIN</span>
+							<span class="route-value">/in/juan-pablo-quintero</span>
+							<span class="route-status">OPEN <i class="route-arrow">&rarr;</i></span>
+						</a>
+						<a class="routes-row" role="row" href="https://github.com/juanpquintero" target="_blank" rel="noopener noreferrer">
+							<span class="route-type">GITHUB</span>
+							<span class="route-value">@juanpquintero</span>
+							<span class="route-status">OPEN <i class="route-arrow">&rarr;</i></span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>
+
+<style>
+	.container {
+		max-width: 1100px;
+		margin: 0 auto;
+		padding: var(--spacing-xl) var(--spacing-gutter);
+	}
+
+	.section {
+		margin-top: var(--spacing-xl);
+		margin-bottom: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+		scroll-margin-top: var(--spacing-xl); /* Espacio superior al desplazarse mediante scroll */
+	}
+
+	.section h2 {
+		border-bottom: 2px solid var(--color-border);
+		padding-bottom: var(--spacing-xs);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	/* --- Sección Contacto --- */
+	.contacto-section {
+		margin-top: var(--spacing-xl);
+		margin-bottom: var(--spacing-xl);
+		scroll-margin-top: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.contacto-header {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: var(--spacing-sm);
+		border-bottom: 2px solid var(--color-border);
+		padding-bottom: var(--spacing-xs);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.contacto-header h2 {
+		margin-bottom: 0;
+	}
+
+	.uptime-indicator {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-xs);
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		color: var(--color-secondary);
+	}
+
+	.uptime-dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background-color: var(--color-tertiary);
+		animation: uptime-pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes uptime-pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.25; }
+	}
+
+	.uptime-value {
+		color: var(--color-tertiary);
+	}
+
+	.contacto-intro {
+		font-size: 16px;
+		line-height: 1.65;
+		color: var(--color-on-surface);
+		max-width: 800px;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.contacto-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: var(--spacing-xl);
+		align-items: start;
+	}
+
+	.transmit-panel {
+		border-left: 2px solid var(--color-primary);
+		padding-left: var(--spacing-md);
+	}
+
+	.routes-panel {
+		border-left: 2px solid var(--color-secondary);
+		padding-left: var(--spacing-md);
+	}
+
+	.panel-tag {
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		color: var(--color-primary);
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.routes-panel .panel-tag {
+		color: var(--color-secondary);
+	}
+
+	/* Panel de transmisión (formulario) */
+	.transmit-form .form-group:last-of-type {
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.transmit-submit {
+		width: 100%;
+	}
+
+	.transmit-feedback {
+		font-family: var(--font-display);
+		font-size: 13px;
+		font-weight: 700;
+		color: var(--color-tertiary);
+		margin-top: var(--spacing-sm);
+		margin-bottom: 0;
+		min-height: 1em;
+	}
+
+	.transmit-feedback.is-error {
+		color: var(--color-primary);
+	}
+
+	/* Panel de canales directos (routing table) */
+	.routes-table {
+		display: flex;
+		flex-direction: column;
+		border: 2px solid var(--color-border);
+		border-radius: var(--rounded-sm);
+		overflow: hidden;
+	}
+
+	.routes-row {
+		display: grid;
+		grid-template-columns: 90px 1fr auto;
+		gap: var(--spacing-sm);
+		align-items: center;
+		padding: var(--spacing-sm) var(--spacing-md);
+		font-family: var(--font-display);
+		font-size: 13px;
+		border-bottom: 1px dashed var(--color-border);
+	}
+
+	.routes-row:last-child {
+		border-bottom: none;
+	}
+
+	.routes-row-header {
+		background-color: var(--color-surface);
+		color: var(--color-secondary);
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		font-size: 11px;
+	}
+
+	a.routes-row {
+		color: var(--color-on-surface);
+		text-decoration: none;
+		border-bottom: 1px dashed var(--color-border);
+		transition: background-color 0.2s ease, color 0.2s ease;
+	}
+
+	a.routes-row:hover {
+		background-color: rgba(254, 128, 25, 0.06);
+		color: var(--color-on-surface);
+	}
+
+	.route-type {
+		color: var(--color-secondary);
+		font-weight: 700;
+	}
+
+	.route-value {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.route-status {
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-xs);
+		color: var(--color-tertiary);
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	.route-arrow {
+		font-style: normal;
+		opacity: 0;
+		transform: translateX(-4px);
+		transition: opacity 0.2s ease, transform 0.2s ease;
+	}
+
+	a.routes-row:hover .route-arrow {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	/* --- Sección Divulgación --- */
+	.divulgacion-section {
+		margin-top: var(--spacing-xl);
+		margin-bottom: var(--spacing-xl);
+		scroll-margin-top: var(--spacing-xl);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-md);
+	}
+
+	.divulgacion-header {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+	}
+
+	.divulgacion-header .header-divider {
+		height: 2px;
+		border-bottom: 2px solid var(--color-border);
+		width: 100%;
+	}
+
+	.divulgacion-intro {
+		font-size: 18px;
+		font-weight: 500;
+		line-height: 1.5;
+		color: var(--color-on-surface);
+		max-width: 800px;
+		margin-bottom: var(--spacing-sm);
+	}
+
+	.divulgacion-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: var(--spacing-xl);
+		margin-top: var(--spacing-sm);
+	}
+
+	.divulgacion-column {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-xs);
+		border-left: 2px dashed var(--color-border);
+		padding-left: var(--spacing-md);
+		transition: border-left-color 0.25s ease;
+	}
+
+	.divulgacion-column .column-tag {
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		color: var(--color-secondary);
+		transition: color 0.25s ease;
+	}
+
+	.divulgacion-column .column-desc {
+		font-family: var(--font-body);
+		font-size: 14px;
+		color: rgba(235, 219, 178, 0.85);
+		line-height: 1.5;
+		margin-bottom: 0;
+	}
+
+	.divulgacion-column.col-build:hover {
+		border-left-color: var(--color-primary);
+	}
+	.divulgacion-column.col-build:hover .column-tag {
+		color: var(--color-primary);
+	}
+
+	.divulgacion-column.col-break:hover {
+		border-left-color: var(--color-secondary);
+	}
+	.divulgacion-column.col-break:hover .column-tag {
+		color: var(--color-secondary);
+	}
+
+	.divulgacion-column.col-fix:hover {
+		border-left-color: var(--color-tertiary);
+	}
+	.divulgacion-column.col-fix:hover .column-tag {
+		color: var(--color-tertiary);
+	}
+
+	.mission-panel {
+		border: 2px dashed var(--color-border);
+		background-color: rgba(254, 128, 25, 0.04);
+		border-radius: var(--rounded-sm);
+		padding: var(--spacing-lg);
+		margin-top: var(--spacing-sm);
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-sm);
+	}
+
+	.mission-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--spacing-xs);
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+	}
+
+	.mission-tag {
+		color: var(--color-primary);
+	}
+
+	.mission-status {
+		color: var(--color-tertiary);
+	}
+
+	.mission-text {
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--color-on-surface);
+		margin-bottom: 0;
+	}
+
+	.mission-goal {
+		border-top: 1px dashed var(--color-border);
+		padding-top: var(--spacing-sm);
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		font-size: 14px;
+	}
+
+	.goal-label {
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		color: var(--color-secondary);
+	}
+
+	.goal-value {
+		font-family: var(--font-body);
+		color: var(--color-on-surface);
+		line-height: 1.5;
+	}
+
+</style>
+
+<script>
+	let uptimeInterval: ReturnType<typeof setInterval> | undefined;
+
+	function initUptimeCounter() {
+		const el = document.getElementById('contact-uptime');
+		if (!el) return;
+
+		if (uptimeInterval) clearInterval(uptimeInterval);
+
+		const start = Date.now();
+		const tick = () => {
+			const elapsedSeconds = Math.floor((Date.now() - start) / 1000);
+			const hh = String(Math.floor(elapsedSeconds / 3600)).padStart(2, '0');
+			const mm = String(Math.floor((elapsedSeconds % 3600) / 60)).padStart(2, '0');
+			const ss = String(elapsedSeconds % 60).padStart(2, '0');
+			el.textContent = `${hh}:${mm}:${ss}`;
+		};
+
+		tick();
+		uptimeInterval = setInterval(tick, 1000);
+	}
+
+	function initTransmitForm() {
+		const form = document.getElementById('contact-form') as HTMLFormElement | null;
+		const feedback = document.getElementById('transmit-feedback');
+		if (!form || !feedback) return;
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+
+			const name = (document.getElementById('contact-name') as HTMLInputElement).value.trim();
+			const subject = (document.getElementById('contact-subject') as HTMLInputElement).value.trim();
+			const message = (document.getElementById('contact-message') as HTMLTextAreaElement).value.trim();
+
+			if (!message) {
+				feedback.textContent = '[ERROR] El mensaje no puede estar vacío.';
+				feedback.classList.add('is-error');
+				return;
+			}
+
+			const email = form.dataset.contactEmail;
+			const mailSubject = encodeURIComponent(`[Contacto Web] ${subject || 'Nuevo mensaje'}`);
+			const mailBody = encodeURIComponent(`${message}\n\n— ${name || 'Anónimo'}`);
+
+			feedback.classList.remove('is-error');
+			feedback.textContent = '[OK] Cliente de correo abierto con tu mensaje precargado.';
+
+			// Se dispara el mailto desde un enlace temporal para no navegar la pestaña actual.
+			const link = document.createElement('a');
+			link.href = `mailto:${email}?subject=${mailSubject}&body=${mailBody}`;
+			link.click();
+		});
+	}
+
+	// Inicialización compatible con transiciones de Astro (ViewTransitions)
+	initUptimeCounter();
+	initTransmitForm();
+	document.addEventListener('astro:page-load', () => {
+		initUptimeCounter();
+		initTransmitForm();
+	});
+</script>

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "architecture-doc": {
+      "source": "juanpquintero/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/architecture-doc/SKILL.md",
+      "computedHash": "1b32c180645cb7a7d6eeb746ad2107466d713d81cc9bd73f0fce73c0e4a05335"
+    },
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "4eabc66183767153e404b39d1b839b1c37f2d82d86f0a0d7e880a579d8d62336"
+    }
+  }
+}

@@ -1,0 +1,223 @@
+---
+---
+<section id="sobre-mi" class="section card zero-gravity">
+  <div class="about-layout">
+    <!-- Columna Izquierda: Credenciales de Ingeniero -->
+    <div class="credentials-panel">
+      <div>
+        <div class="credentials-header">[+] CREDENCIALES_INGENIERO</div>
+        <div class="credentials-list">
+          <div class="credentials-item">
+            <span class="credentials-label">ID:</span>
+            <span class="credentials-value">9942-QP</span>
+          </div>
+          <div class="credentials-item">
+            <span class="credentials-label">INGENIERO:</span>
+            <span class="credentials-value">Juan P. Quintero</span>
+          </div>
+          <div class="credentials-item">
+            <span class="credentials-label">RANGO:</span>
+            <span class="credentials-value">Tech Lead</span>
+          </div>
+          <div class="credentials-item">
+            <span class="credentials-label">ESTADO:</span>
+            <span class="status-tag">ONLINE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Indicadores de Ecosistema -->
+      <div class="progress-section">
+        <div class="progress-title">[+] ENGINE_STATUS</div>
+        
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>BACKEND CORE</span>
+            <span class="text-tertiary">100%</span>
+          </div>
+          <div class="progress-bar-char">[██████████]</div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>CLOUD (GCP)</span>
+            <span class="text-tertiary">90%</span>
+          </div>
+          <div class="progress-bar-char">[█████████░]</div>
+        </div>
+
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>IA (GEMINI)</span>
+            <span class="text-tertiary">90%</span>
+          </div>
+          <div class="progress-bar-char">[█████████░]</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha: Biografía e Ideas -->
+    <div class="bio-panel">
+      <h2>Base del <span>sobre-mi</span></h2>
+      <p>
+        Soy un líder técnico y desarrollador con una fuerte convicción: la ingeniería de software no tiene por qué estar estancada en el pasado para ser robusta. Mi enfoque radica en servir como puente entre la zona de confort de los sistemas tradicionales y la disrupción de la tecnología moderna.
+      </p>
+      <p>
+        Entiendo profundamente por qué los ingenieros nos aferramos a lenguajes y arquitecturas consolidadas: buscamos estabilidad. Sin embargo, mi trabajo diario consiste en demostrar que es posible integrar Inteligencia Artificial, automatización y arquitecturas en la nube modernas sin sacrificar la fiabilidad del código base.
+      </p>
+      
+      <!-- Cita Destacada (Signature Element de la Bio) -->
+      <div class="bio-quote">
+        <span class="quote-symbol">&gt;_</span>
+        <p class="quote-text">
+          "No construimos para reemplazar al ingeniero, construimos para potenciarlo."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-sm);
+  }
+
+  @media (min-width: 768px) {
+    .about-layout {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  /* Panel de Credenciales */
+  .credentials-panel {
+    flex: 1;
+    background-color: var(--color-neutral);
+    border: 2px solid var(--color-border);
+    border-radius: var(--rounded-md);
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--font-display);
+    font-size: 13px;
+    max-width: 320px;
+    width: 100%;
+    box-shadow: inset 1px 1px 0px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (max-width: 767px) {
+    .credentials-panel {
+      max-width: 100%;
+    }
+  }
+
+  .credentials-header {
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-secondary);
+    font-weight: 700;
+  }
+
+  .credentials-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .credentials-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .credentials-label {
+    color: var(--color-secondary);
+    font-weight: 700;
+  }
+
+  .credentials-value {
+    color: var(--color-on-surface);
+  }
+
+  .status-tag {
+    color: var(--color-tertiary);
+    font-weight: 700;
+  }
+
+  /* Indicadores de progreso retro */
+  .progress-section {
+    border-top: 1px dashed var(--color-border);
+    padding-top: var(--spacing-sm);
+  }
+
+  .progress-title {
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .progress-item {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .progress-bar-char {
+    color: var(--color-tertiary);
+    font-family: var(--font-display);
+    letter-spacing: 0.05em;
+  }
+
+  /* Panel de Biografía */
+  .bio-panel {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bio-panel h2 {
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .bio-quote {
+    border: 2px dashed var(--color-border);
+    background-color: rgba(254, 128, 25, 0.04);
+    border-radius: var(--rounded-sm);
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+
+  .quote-symbol {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.4;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.45;
+    margin-bottom: 0;
+  }
+</style>
